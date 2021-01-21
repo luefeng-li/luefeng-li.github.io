@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang='en' ><meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+<title>Eureka Demo</title>
+<link rel="stylesheet" href="/css/eureka.min.css">
+<script defer src="/js/eureka.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload"
+  href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap"
+  as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/styles/solarized-light.min.css"
+   media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.0/build/highlight.min.js"
+   crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/js/all.min.js"
+   integrity="sha256-uNYoXefWRqv&#43;PsIF/OflNmwtKM4lStn9yrz2gVl6ymo="  crossorigin></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
+   integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3&#43;Aro6EYUG4&#43;cU&#43;KJWu/X"  media="print"
+  onload="this.media='all';this.onload=null" crossorigin>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" 
+  integrity="sha384-g7c&#43;Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI&#43;sEnkvrMWph2EDg4"  crossorigin></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"
+   integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC&#43;Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa"  crossorigin></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "\\[", right: "\\]", display: true }
+      ],
+    });
+  });
+</script>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_32x32_fill_box_center_2.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icon_hu64421c6c7700f606f0ad45d807017b09_5843_180x180_fill_box_center_2.png">
+
+<meta name="description"
+  content="Eureka is a elegant and powerful theme for Hugo.">
+
+
+
+<meta property="og:title" content="Eureka Demo" />
+<meta property="og:type" content="website" />
+
+
+<meta property="og:image" content="/images/icon.png">
+
+
+<meta property="og:url" content="/" />
+
+
+
+
+
+<meta property="og:description" content="Eureka is a elegant and powerful theme for Hugo." />
+
+
+
+
+
+<meta property="og:locale" content="en" />
+
+
+
+
+<meta property="og:site_name" content="Eureka Demo" />
+
+
+
+
+
+
+<meta property="og:updated_time" content="2020-11-20T22:52:56&#43;08:00" />
+
+
+
+<meta property="article:section" content="" />
+
+
+<link rel="alternate" type="application/rss+xml" href="/index.xml" title="Eureka Demo" />
+
+<body class="flex flex-col min-h-screen">
+  <header class="fixed flex items-center w-full min-h-16 pl-scrollbar z-50 bg-secondary-bg shadow-sm">
+    <div class="w-full max-w-screen-xl mx-auto"><script>
+    let storageColorScheme = localStorage.getItem("lightDarkMode")
+    if (((storageColorScheme == 'Auto' || storageColorScheme == null) && window.matchMedia("(prefers-color-scheme: dark)").matches) || storageColorScheme == "Dark") {
+        document.getElementsByTagName('html')[0].classList.add('dark')
+    }
+</script>
+<nav class="flex items-center justify-between flex-wrap p-4">
+    <a href="/" class="mr-6 text-primary-text text-xl font-bold">Eureka Demo</a>
+    <button id="navbar-btn" class="md:hidden flex items-center px-3 py-2" aria-label="Open Navbar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div id="target"
+        class="hidden block md:flex md:flex-grow md:justify-between md:items-center w-full md:w-auto text-primary-text z-20">
+        <div class="text-sm md:flex-grow pb-4 md:pb-0 border-b md:border-b-0">
+            <a href="/#about"
+                class="block mt-4 md:inline-block md:mt-0  hover:text-eureka mr-4">About</a>
+            <a href="/posts/"
+                class="block mt-4 md:inline-block md:mt-0  hover:text-eureka mr-4">Posts</a>
+            <a href="/docs/"
+                class="block mt-4 md:inline-block md:mt-0  hover:text-eureka mr-4">Docs</a>
+        </div>
+
+        <div class="flex">
+            <div class="relative pt-4 md:pt-0">
+                <div class="cursor-pointer hover:text-eureka" id="lightDarkMode">
+                    <i class="fas fa-adjust"></i>
+                </div>
+                <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-30" id="is-open">
+                </div>
+                <div class="absolute flex flex-col left-0 md:left-auto right-auto md:right-0 hidden bg-secondary-bg w-48 rounded py-2 border border-tertiary-bg cursor-pointer z-40"
+                    id='lightDarkOptions'>
+                    <span class="px-4 py-1 hover:text-eureka">Light</span>
+                    <span class="px-4 py-1 hover:text-eureka">Dark</span>
+                    <span class="px-4 py-1 hover:text-eureka">Auto</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed hidden inset-0 opacity-0 h-full w-full cursor-default z-0" id="is-open-mobile">
+    </div>
+
+</nav>
+<script>
+    let element = document.getElementById('lightDarkMode')
+    if (storageColorScheme == null || storageColorScheme == 'Auto') {
+        document.addEventListener('DOMContentLoaded', () => {
+            switchMode('Auto')
+        })
+    } else if (storageColorScheme == "Light") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'sun')
+        element.firstElementChild.classList.add('fa-sun')
+    } else if (storageColorScheme == "Dark") {
+        element.firstElementChild.classList.remove('fa-adjust')
+        element.firstElementChild.setAttribute("data-icon", 'moon')
+        element.firstElementChild.classList.add('fa-moon')
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        getcolorscheme();
+        switchBurger();
+    });
+</script></div>
+  </header>
+  <main class="flex-grow pt-16">
+  
+  
+  
+    
+      
+  
+
+  
+
+  
+  
+  
+
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+  
+
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+  
+
+  <div class="pl-scrollbar bg-secondary-bg" 
+    >
+    <div class="max-w-screen-xl mx-auto">
+      <div id="Nicholaslee" class="lg:w-3/4 mx-auto px-6 md:px-8 xl:px-12 py-12">
+        
+  
+
+  
+    <div class="flex flex-col md:flex-row items-center justify-center mb-12">
+  
+  
+    <div class="flex-none w-48 mx-auto md:ml-0 md:mr-8 md:pr-8 md:border-r">
+      <img src="/LEE_OGPimage.png" class="rounded-full" alt="Avatar">
+    </div>
+  
+  <div class="flex-grow mt-4 md:mt-0">
+    <div class="text-3xl py-4">Yuefeng Li</div>
+    <div class="w-3/12 xl:w-2/12 border-b"></div>
+
+    <div class="flex items-center pt-4">
+      
+        <i class="fas fa-user"></i>
+      
+      <div class="flex flex-wrap">
+        
+          <span class="pl-4">Undergraduate,Research assistant</span>
+        
+
+        
+      </div>
+
+    </div>
+
+    
+      <div class="py-8 text-lg leading-normal">
+        Harbin University of Science and Technology, Department of Mechanical Engineering. Research assistant in The Chinese University of Hong Kong，Shenzhen (CUHKSZ) 
+      </div>
+    
+  </div>
+  <div class="flex md:flex-col justify-center items-end ml-8">
+    
+    
+      
+      
+      
+      
+      
+      <div class="pb-2 pr-4 md:pr-0 pt-4 md:pt-0">
+        <a href="mailto:example@example.com"><i class="nicholaslouisfeng@outlook.com fa-envelope"></i></a>
+      </div>
+    
+      
+      
+      
+      
+      
+      <div class="pb-2 pr-4 md:pr-0 pt-4 md:pt-0">
+        <a href="https://example.com/"><i class="https://github.com/luefeng-li fa-github"></i></a>
+      </div>
+    
+  </div>
+</div>
+<div class="content">
+  <h2 id="self-introduction">Self Introduction</h2>
+<p>Yuefeng Li received the B.E. degree in mechanical engineering from the Harbin University of Science and Technology., weihai, China, in 2016 and 2020; He was a Research assistant in Chinese University of Hong Kong, Shenzhen. (2020-2021). His main research field includes robotics, Artificial muscles and Information processing.</p>
+<p>The Chinese University of Hong Kong，Shenzhen (CUHKSZ) Shenzhen, China	 
+RA in Shenzhen Institute of Artificial Intelligence and Robotics for Society     Jul.2020-Presen</p>
+<ul>
+<li>Investigation and Analysis about twisted and coiled artificial muscle, and Writing review;</li>
+<li>Made nylon 66 muscles and considered how to apply them to soft robots.</li>
+</ul>
+<h2 id="research-experience">RESEARCH EXPERIENCE</h2>
+<p>The Design of a Fluidic-Muscle and Fuzzy-PID based Bionic Robot Manipulator
+Project Leader （Undergraduate Innovation Project, 黑龙江省大学生创新省级项目）                                                      05/ 2019-Present</p>
+<ul>
+<li>Employed the FluidicMuscle artificial muscles for the manipulator’s joints control;</li>
+<li>Designed the pneumatic circuit for high-precision manipulator’s movement control;</li>
+<li>Combined fuzzy-PID controllers with a closed loop; Designed  3D-Printed the robot structural model.</li>
+</ul>
+<p>The Design of a Novel Squeezed Liquid Composite Armature Electromagnetic Railgun 
+Project Co-Leader                                          05/2018-05/2019</p>
+<ul>
+<li>Employed a low-cost liquid composite armature design to reduce the switching probability;</li>
+<li>Optimized the traditional parallel fixed rail with a squeeze rail to avoid the contact failure;</li>
+<li>Designed and manufactured the model of composite armature, splint and barrel.</li>
+</ul>
+<p>The Design of an Automatic Potato Harvester
+Project Co-Leader（Undergraduate Innovation Project, 黑龙江省大学生创新省级项目）05/2017-11/2018</p>
+<ul>
+<li>Proposed the driving, the excavating-separating systems and combined them with lifting system;</li>
+<li>Completed the 3D modellings with Proe and 2D Drawings with AutoCAD;</li>
+<li>Cooperated with international members and Negotiated with the sub-contractors and logistics.</li>
+</ul>
+<h2 id="publications">PUBLICATIONS</h2>
+<p>Journal Papers:</p>
+<ol>
+<li>Yuefeng Li and Xingliang Zhou, &ldquo;Rolling Bearing Fault Diagnosis Based on HVD algorithm and Sample Entropy&rdquo;, Journal of Computational Methods in Sciences and Engineering, vol.19, no. S1, pp. 331-340, 2019. [EI]</li>
+<li>Yuefeng Li, Jintao Zhao, Le Zhang, &ldquo;A Research on Rolling Bearing Fault Diagnosis Method based on Improved Adaptive EEMD and SVM&rdquo;, Journal of the Mine Ventilation Society of South Africa, vol.73, no. S1, pp. 441-428, 2020. [EI]</li>
+<li>Jiaqi Lu, Yuefeng Li, Junqiao Li, &quot; Research on an Extrusion Liquid Composite Armature Electromagnetic Railgun&quot;, Electronic test, no. 9, pp. 23-25, 2019. (In Chinese)</li>
+</ol>
+<p>Conference Papers:</p>
+<ol>
+<li>Yuefeng Li, “A &ldquo;Photographing and Making Money&rdquo; Pricing Model Based on Game Theory”, The 3rd International Conference on Applied Mathematics and Information Technology, Nanjing, Jiangsu, China, 2018, pp. 62-69.</li>
+<li>Jiaqi Liu, Yuefeng Li, Bo Liang, Ye Du, Zongteng Sun, Peng Zhang, &ldquo;Research on the Synthesis and Properties of PPY Modified Electrode IPMC&rdquo;, IOP Conference Series: Materials Science and Engineering, vol. 493, no1, pp.1-7, 2019. [EI]</li>
+<li>Zhaojun Yao, Yuefeng Li, Zhihong Liu, &quot; Optimal Thickness Design of Thermal Protective Clothing&quot;, The 4th International Conference on Applied Mathematics and Data Science, Xi&rsquo;an, Shaanxi, China, 2019, pp. 15-23.</li>
+</ol>
+<h2 id="field-patents">Field Patents:</h2>
+<ol>
+<li>The Design of a Novel Self-service Beverage Machine (「一种自助饮料机」; 201910244286.0, Under Review);</li>
+<li>The Design of a Transport Device with Vibration Functions (「一种具有振动功能的运输装置」, 201822055671.4 , CN 209226013 U);</li>
+<li>A Novel Self-Propelled Potato Harvester (「一种自行式马铃薯收割机」; 201822055660.6 , CN 209218623 U);</li>
+<li>An IPMC-based inchworm-like pipe crawling mechanism (「一种基于IPMC的仿生尺蠖管道爬行机构」, 201820737824.0 , CN 208204346 U);</li>
+<li>High temperature radiation UAV (「高温散热无人机螺旋桨」; 2018 2 2002924. 1 , CN 209305820 U);</li>
+<li>A Remotely Operated Pneumatic Manipulator Based On Kinect (「一种基于Kinect远程操控的气动机械手」; 202020543236.0 , CN 212241086 U &amp; 202010289494.5 , Under Review);</li>
+<li>A Remotely Operated Pneumatic Manipulator Based On Kinect (U.S. Patent Application 16874704, Under Review);</li>
+</ol>
+<h2 id="field-patents-1">Field Patents:</h2>
+<p>Selected Awards</p>
+<ol>
+<li>American College Mathematical Modeling Competition: Successful Participant (2019)；</li>
+<li>The 16th College Student Challenge Cup Innovation Competition (Heilongjiang): Second Prize (2019);</li>
+<li>American College Mathematical Modeling Competition: Successful Participant (2018)；</li>
+<li>China Undergraduate Mathematical Contest in Modeling (Heilongjiang): First Prize (2018);</li>
+<li>China College Students’ Entrepreneurship Competition in 2018 (HUST): Outstanding Award (2018);</li>
+<li>National Intangible Cultural Heritage Knowledge Competition: Outstanding Award in HUST (2018);</li>
+<li>Northeastern China Undergraduate Mathematical Contest in Modeling: Second Prize (2018);</li>
+<li>The 2nd China Undergraduate Environmental Knowledge Competition: Outstanding Award (2018);</li>
+<li>The 8th Mathor Cup Undergraduate Mathematical Modelling Contest (2018);</li>
+<li>China Undergraduate Mathematical Contest in Modeling (Heilongjiang): Second Prize (2017);</li>
+<li>Northeastern China Undergraduate Mathematical Contest in Modeling: Second Prize (2017);</li>
+<li>China Undergraduate Mathematical Contest in Modeling (Heilongjiang): First Prize (2017);</li>
+<li>“Shuchuang-Cup” China Undergraduate Mathematical Contest in Modeling: Second Award (2017);</li>
+<li>China Undergraduate Modeling Contest (Non-Math Group, Heilongjiang): Second Price (2017);</li>
+</ol>
+<p>Selected Scholarships or Sponsorships</p>
+<ol>
+<li>The Second-Class Outstanding Student Scholarship (2020 sem2);</li>
+<li>Heilongjiang Undergraduate Innovation Project Sponsorship (2019, 5k CNY);</li>
+<li>National University Student Scholarship: First Prize (2019, 4k CNY).</li>
+<li>The Third-Class Outstanding Student Scholarship (2019 sem2);</li>
+<li>The Second-Class Outstanding Student Scholarship (2019 sem1);</li>
+<li>HUST Merit Student (2019);</li>
+<li>Heilongjiang Undergraduate Innovation Project Sponsorship (2018, 5K CNY);</li>
+<li>The First-Class Outstanding Student Scholarship (2018 sem1);</li>
+<li>The Second-Class Outstanding Student Scholarship (2018 sem2);</li>
+<li>HUST Merit Student (2018);</li>
+<li>The Second-Class Outstanding Student Scholarship (2017 sem2);</li>
+<li>The Second-Class Outstanding Student Scholarship (2017 sem1);</li>
+<li>Heilongjiang Undergraduate Innovation Project Sponsorship (2017, 5K CNY);</li>
+<li>National University Student Scholarship: Special Prize (2017, 5k CNY);</li>
+<li>China Unicom Scholarship for Impoverished College Students (2016, 8k CNY);</li>
+<li>National University Student Scholarship: First Prize (2016, 4k CNY).</li>
+</ol>
+
+</div>
+  
+
+      </div>
+    </div>
+  </div>
+
+    
+
+  
+  
+    
+      
+  
+
+  
+
+  
+  
+  
+
+  
+    
+    
+    
+    
+    
+    
+    
+  
+
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+  
+
+  <div class="pl-scrollbar bg-primary-bg" 
+    >
+    <div class="max-w-screen-xl mx-auto">
+      <div id="pages" class="lg:w-3/4 mx-auto px-6 md:px-8 xl:px-12 py-12">
+        
+  
+
+  
+    
+  <h2 class=" font-bold text-3xl my-4">Pages</h2>
+
+
+  
+  
+  <div class="overflow-hidden divide-y">
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="mb-4">
+  <a href="/posts/math-support/" class="font-bold text-xl hover:text-eureka">Math Support</a>
+</div>
+<div class="content">
+  Eureka supports the rendering of mathematical formulas by using KaTeX.
+
+</div>
+
+<div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+    <div class="mr-6 my-2">
+        <i class="fas fa-calendar mr-1"></i>
+        <span>2020-11-20</span>
+    </div>
+    <div class="mr-6 my-2">
+        <i class="fas fa-clock mr-1"></i>
+        <span>1 min read</span>
+    </div>
+    
+    
+
+    
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full lg:w-2/3">
+    <div class="mb-4">
+  <a href="/posts/featured-image/" class="font-bold text-xl hover:text-eureka">Featured Image</a>
+</div>
+<div class="content">
+  Maecenas maximus, elit in ornare porttitor, nisi eros hendrerit nisl, sed fermentum nulla urna blandit tellus.
+
+</div>
+
+<div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+    <div class="mr-6 my-2">
+        <i class="fas fa-calendar mr-1"></i>
+        <span>2020-05-26</span>
+    </div>
+    <div class="mr-6 my-2">
+        <i class="fas fa-clock mr-1"></i>
+        <span>2 min read</span>
+    </div>
+    
+    
+    <div class="mr-6 my-2">
+        <i class="fas fa-folder mr-1"></i>
+        
+        <a href="/categories/themes/" class="hover:text-eureka">themes</a>
+        
+    </div>
+    
+
+    
+    <div class="mr-6 my-2">
+        <i class="fas fa-th-list mr-1"></i>
+        
+        <a href="/series/themes-guide/" class="hover:text-eureka">Themes Guide</a>
+        
+    </div>
+    
+</div>
+
+  </div>
+
+  
+  <div class="w-full lg:w-1/3 mb-4 lg:mb-0 lg:ml-8">
+    <img src="/images/hero-right.jpg" class="w-full" alt="Featured Image">
+  </div>
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="mb-4">
+  <a href="/posts/markdown-syntax/" class="font-bold text-xl hover:text-eureka">Markdown Syntax Guide</a>
+</div>
+<div class="content">
+  This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.
+
+</div>
+
+<div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+    <div class="mr-6 my-2">
+        <i class="fas fa-calendar mr-1"></i>
+        <span>2019-03-11</span>
+    </div>
+    <div class="mr-6 my-2">
+        <i class="fas fa-clock mr-1"></i>
+        <span>3 min read</span>
+    </div>
+    
+    
+    <div class="mr-6 my-2">
+        <i class="fas fa-folder mr-1"></i>
+        
+        <a href="/categories/themes/" class="hover:text-eureka">themes</a>
+        
+        
+        <span>, </span>
+        <a href="/categories/syntax/" class="hover:text-eureka">syntax</a>
+        
+    </div>
+    
+
+    
+    <div class="mr-6 my-2">
+        <i class="fas fa-th-list mr-1"></i>
+        
+        <a href="/series/themes-guide/" class="hover:text-eureka">Themes Guide</a>
+        
+    </div>
+    
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="mb-4">
+  <a href="/posts/placeholder-text/" class="font-bold text-xl hover:text-eureka">Placeholder Text</a>
+</div>
+<div class="content">
+  Lorem est tota propiore conpellat pectoribus de pectora summo.
+
+</div>
+
+<div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+    <div class="mr-6 my-2">
+        <i class="fas fa-calendar mr-1"></i>
+        <span>2019-03-09</span>
+    </div>
+    <div class="mr-6 my-2">
+        <i class="fas fa-clock mr-1"></i>
+        <span>2 min read</span>
+    </div>
+    
+    
+
+    
+    <div class="mr-6 my-2">
+        <i class="fas fa-th-list mr-1"></i>
+        
+        <a href="/series/themes-guide/" class="hover:text-eureka">Themes Guide</a>
+        
+    </div>
+    
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+  <div class="py-6">
+    <div class="flex flex-col-reverse lg:flex-row justify-between">
+  
+  <div class="w-full ">
+    <div class="mb-4">
+  <a href="/posts/emoji-support/" class="font-bold text-xl hover:text-eureka">Emoji Support</a>
+</div>
+<div class="content">
+  Emoji can be enabled in a Hugo project in a number of ways.
+
+</div>
+
+<div class="flex flex-wrap flex-row items-center mt-2 text-tertiary-text">
+    <div class="mr-6 my-2">
+        <i class="fas fa-calendar mr-1"></i>
+        <span>2019-03-05</span>
+    </div>
+    <div class="mr-6 my-2">
+        <i class="fas fa-clock mr-1"></i>
+        <span>1 min read</span>
+    </div>
+    
+    
+
+    
+</div>
+
+  </div>
+
+  
+</div>
+  </div>
+  
+</div>
+
+
+  <div class="pt-2 hover:text-eureka">
+    
+  <a href="/posts/" class="font-semibold">Read More</a>
+  <i class="fas fa-caret-right ml-1"></i>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+      </div>
+    </div>
+  </div>
+
+    
+
+  
+  
+    
+      
+  
+
+  
+
+  
+  
+  
+
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+  
+
+  
+  
+  
+  
+
+  <div class="pl-scrollbar bg-secondary-bg" 
+    >
+    <div class="max-w-screen-xl mx-auto">
+      <div id="vintage" class="">
+        
+  
+
+  
+    <div class="grid grid-cols-9 grid-rows-5 h-(screen-16)">
+  <div class="col-start-2 col-span-4 row-start-3 row-span-2 bg-local bg-cover z-10 shadow-2xl"
+    style="background-image: url(/images/hero-left.jpg);"></div>
+
+  <div class="col-start-3 col-span-5 row-start-2 row-span-3 z-20">
+    <div class="flex flex-col items-center justify-center min-h-full">
+      <div class="bg-white bg-opacity-75 shadow-2xl -m-12 p-12">
+        <span class="font-bold text-black text-opacity-75 text-2xl md:text-3xl">We are all in the gutter, but some of us are looking at the stars.</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-start-5 col-span-4 row-start-2 row-span-2 bg-local bg-cover shadow-2xl"
+    style="background-image: url(/images/hero-right.jpg);">
+  </div>
+</div>
+  
+
+      </div>
+    </div>
+  </div>
+
+    
+
+  
+  
+    
+      
+  
+
+  
+
+  
+  
+  
+
+  
+    
+    
+    
+    
+    
+    
+      
+      
+        
+      
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+  
+
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+  
+
+  <div class="pl-scrollbar bg-cover" 
+     style="background-image: url(/images/hero-left.jpg);" >
+    <div class="max-w-screen-xl mx-auto">
+      <div id="blank" class="lg:w-3/4 mx-auto px-6 md:px-8 xl:px-12 py-12">
+        
+  
+
+  
+    
+<div style="text-align:center">
+  <p>Write anything you like here!</p>
+</div>
+  
+
+      </div>
+    </div>
+  </div>
+
+    
+
+  
+  
+  </main>
+  <footer class="pl-scrollbar">
+    <div class="w-full max-w-screen-xl mx-auto"><div class="text-center p-6 pin-b">
+    <p class="text-sm text-tertiary-text">&copy; 2021 <a href="https://www.wangchucheng.com/">C. Wang</a> and <a href="https://www.ruiqima.com/">R. Ma</a> &middot;  Powered by the <a href="https://github.com/wangchucheng/hugo-eureka" class="hover:text-eureka">Eureka</a> theme for <a href="https://gohugo.io" class="hover:text-eureka">Hugo</a></p>
+</div></div>
+  </footer>
+</body>
+
+</html>
